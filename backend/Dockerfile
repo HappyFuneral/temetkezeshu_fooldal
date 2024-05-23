@@ -5,8 +5,8 @@ FROM maven:3.8.4-openjdk-17 AS build
 WORKDIR /app
 
 # Copy the pom.xml and any other necessary configuration files
-COPY ./demo/pom.xml /app
-COPY frontend/src /app/src
+COPY ./pom.xml /app
+COPY ./src /app/src
 
 # Build the application
 RUN mvn clean package -Dmaven.test.skip=true
@@ -18,7 +18,7 @@ FROM openjdk:17-jdk
 WORKDIR /app
 
 # Copy the built JAR file from the previous stage
-COPY --from=build /demo/target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 # Expose the port on which the Spring Boot application will run
 EXPOSE 8080

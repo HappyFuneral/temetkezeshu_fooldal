@@ -4,16 +4,18 @@ import React, {useEffect, useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useParams} from "react-router-dom";
 
-import maplibregl from "maplibre-gl";
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {Carousel} from "flowbite-react";
-import {Button, Typography} from "@material-tailwind/react";
+import MapComponent from "./CodeMap.jsx";
 
 
 export const RegionMap = () => {
     const {code}= useParams()
     const [offices,setOffices] = useState([])
-
+    const [selectedLocation, setSelectedLocation] = useState({
+        lat: 28.7041,
+        lng: 77.1025,
+    });
 
     useEffect(() => {
         getOffices()
@@ -44,6 +46,7 @@ export const RegionMap = () => {
                     );
                 })}
             </Carousel>
+            <MapComponent selectedLocation={[selectedLocation]}/>
         </div>
 
     );

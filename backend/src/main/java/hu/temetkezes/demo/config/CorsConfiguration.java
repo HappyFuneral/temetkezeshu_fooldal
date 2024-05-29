@@ -9,8 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
 
-    private final String frontend = "http://react-app:4000";
-    private final String backend = "http://spring-boot-app:8080";
+    private final String frontend = "http://192.168.22.14:4000";
+    private final String backend = "http://192.168.22.14:8080";
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

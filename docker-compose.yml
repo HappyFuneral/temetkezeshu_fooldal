@@ -3,12 +3,12 @@ services:
   mysql:
     image: mysql:8.0
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: Aevum176942
       MYSQL_USER: root2
       MYSQL_PASSWORD: Aevum176942
-      MYSQL_DATABASE: db_example
+      MYSQL_DATABASE: temetkezes
 
   spring-boot-app:
     build:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db_example
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/temetkezes
       SPRING_DATASOURCE_USERNAME: root2
       SPRING_DATASOURCE_PASSWORD: Aevum176942
 

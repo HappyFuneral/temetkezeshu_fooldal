@@ -1,7 +1,8 @@
 import React from "react";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import Office from "./Office.jsx";
 
-const MapComponent = ({ selectedLocation }) => {
+const MapComponent = ({ selectedLocation, offices }) => {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyDWtnOf9mfiuz8Y8FZU-UxeJCCVOe8KLFU",
     });
@@ -13,19 +14,24 @@ const MapComponent = ({ selectedLocation }) => {
     if (!isLoaded) return "Maps";
 
     return (
-        <div style={{ marginTop: "50px" }}>
+        <div className="h-screen" >
             <GoogleMap
                 mapContainerStyle={{
-                    height: "800px",
+                    height: "100%",
                 }}
                 center={selectedLocation}
                 zoom={13}
                 onLoad={onMapLoad}
             >
-                <MarkerF
-                    position={selectedLocation}
-                    icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
-                />
+                {offices.map((office) => {
+                    return (
+                        <MarkerF
+                            position={{lat: office.latitude, lng: office.longitude}}
+                            icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
+                        />
+                    );
+                })}
+
             </GoogleMap>
         </div>
     );

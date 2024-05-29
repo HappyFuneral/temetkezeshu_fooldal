@@ -69,7 +69,7 @@ public class DemoApplication {
 		if (officeRepository.count() == 0) {
 			ArrayList<Office> offices = new ArrayList<>();
 			offices.add(new Office(
-					"Aevum Dembi",
+					"Aevum Temetkezés - Dembinszky",
 					"Magyarország, Budapest 1071, Dembinszky utca 44",
 					47.50755608897227,
 					19.082259008592498,
@@ -79,10 +79,12 @@ public class DemoApplication {
 					"Budapest",
 					"Dembinszky utca 44",
 					"hu-bu",
-					companyRepository.findAll().get(1)					)
+					companyRepository.findAll().get(1),
+					"https://aevumtemetkezes.hu"
+					)
 			);
 			offices.add(new Office(
-					"Aevum Izabella",
+					"Szomorúfűz Temetkezés - Izabella utca",
 					"Magyarország, Budapest 1064, Izabella utca 65",
 					47.50884478894911,
 					19.066047925940623,
@@ -92,10 +94,11 @@ public class DemoApplication {
 					"Budapest",
 					"Izabella utca 65",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.budapest-temetkezes.hu/"
 			));
 			offices.add(new Office(
-					"Aevum Pesti",
+					"Szomorúfűz Temetkezés - Pesti út",
 					"Magyarország, Budapest 1173, Pesti út 41/A",
 					47.48312983311757,
 					19.238884639430985,
@@ -105,10 +108,11 @@ public class DemoApplication {
 					"Budapest",
 					"Pesti út 41/A",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.budapest-temetkezes.hu"
 			));
 			offices.add(new Office(
-					"Aevum Lenhossék",
+					"Gyászhuszár Temetkezés - Lenhossék",
 					"Magyarország, Budapest 1096, Lenhossék utca 33.",
 					47.48072524137717,
 					19.080378810594798,
@@ -118,11 +122,12 @@ public class DemoApplication {
 					"Budapest",
 					"Lenhossék utca 33.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.gyaszhuszar.hu"
 			));
 			offices.add(new Office(
-					"Aevum Villányi",
-					"Magyarország,Budapest 1114, Villányi út 6.",
+					"Gyászhuszár Temetkezés - Budai",
+					"Magyarország, Budapest 1114, Villányi út 6.",
 					47.477960838544284,
 					19.04509812593893,
 					"Magyarország",
@@ -131,11 +136,13 @@ public class DemoApplication {
 					"Budapest",
 					"Villanyi út 6.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.gyaszhuszar.hu"
+
 			));
 			offices.add(new Office(
-					"Aevum Ernő",
-					"Magyarország,Budapest 1096, Ernő u. 30-34",
+					"Szomorúfűz Temetkezés - Ernő",
+					"Magyarország, Budapest 1096, Ernő u. 30-34",
 					47.47958894467054,
 					19.085216554775098,
 					"Magyarország",
@@ -144,11 +151,12 @@ public class DemoApplication {
 					"Budapest",
 					"Ernő u. 30-34.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.budapest-temetkezes.hu"
 			));
 			offices.add(new Office(
-					"Szomorúfűz Temetkezés Budai",
-					"Magyarország,Budapest 1123, Nagyenyed u. 1.",
+					"Szomorúfűz Temetkezés - Budai",
+					"Magyarország, Budapest 1123, Nagyenyed u. 1.",
 					47.498757248209564,
 					19.02339759688433,
 					"Magyarország",
@@ -157,12 +165,13 @@ public class DemoApplication {
 					"Budapest",
 					"Nagyenyed u. 1",
 					"hu-bu",
-					companyRepository.findAll().get(0)
+					companyRepository.findAll().get(0),
+					"https://www.budapest-temetkezes.hu"
 
 			));
 			offices.add(new Office(
-					"Aevum Nagyenyed",
-					"Magyarország,Budapest 1123, Nagyenyed u. 1.",
+					"Szomorúfűz Temetkezés - Nagyenyed",
+					"Magyarország, Budapest 1123, Nagyenyed u. 1.",
 					47.498757248209564,
 					19.02339759688433,
 					"Magyarország",
@@ -171,12 +180,13 @@ public class DemoApplication {
 					"Budapest",
 					"Nagyenyed u. 1",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.budapest-temetkezes.hu"
 
 			));
 			offices.add(new Office(
-					"Aevum Thököly",
-					"Magyarország,Budapest 1147, Thököly út 167.",
+					"Szomorúfűz Temetkezés - Thököly",
+					"Magyarország, Budapest 1147, Thököly út 167.",
 					47.518008662227416,
 					19.110125808598365,
 					"Magyarország",
@@ -185,12 +195,13 @@ public class DemoApplication {
 					"Budapest",
 					"Thököly út 167.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.budapest-temetkezes.hu"
 
 			));
 			offices.add(new Office(
-					"Aevum Szivacs",
-					"Magyarország,Budapest 1204, Szivacs utca 5.",
+					"Szomorúfűz Temetkézés - Szivacs",
+					"Magyarország, Budapest 1204, Szivacs utca 5.",
 					47.44273647035911,
 					19.112461183609113,
 					"Magyarország",
@@ -199,12 +210,13 @@ public class DemoApplication {
 					"Budapest",
 					"Szivacs utca 5.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.budapest-temetkezes.hu/"
 
 			));
 			offices.add(new Office(
 					"Aevum Pap Károly",
-					"Magyarország,Budapest 1139, Pap Károly u. 5.",
+					"Magyarország, Budapest 1139, Pap Károly u. 5.",
 					47.53233069175092,
 					19.07150345292552,
 					"Magyarország",
@@ -213,12 +225,13 @@ public class DemoApplication {
 					"Budapest",
 					"Pap Károly u. 5.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					""
 
 			));
 			offices.add(new Office(
-					"Aevum Bécsi",
-					"Magyarország,Budapest 1032, Bécsi út 143.",
+					"Aevum Temetkezés - Bécsi",
+					"Magyarország, Budapest 1032, Bécsi út 143.",
 					47.53656095256181,
 					19.03342072594215,
 					"Magyarország",
@@ -227,12 +240,13 @@ public class DemoApplication {
 					"Budapest",
 					"Bécsi út 143.",
 					"hu-bu",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://aevumtemetkezes.hu"
 
 			));
 			offices.add(new Office(
-					"Aevum Debrecen Csapó",
-					"Magyarország,Debrecen 4029, Csapó u. 53.",
+					"Szomorúfűz Temetkezés - Debrecen",
+					"Magyarország, Debrecen 4029, Csapó u. 53.",
 					47.53354311350078,
 					21.631736710597696,
 					"Magyarország",
@@ -241,11 +255,12 @@ public class DemoApplication {
 					"Debrecen",
 					"Csapó u. 53",
 					"hu-de",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://debrecen.temetkezes.hu"
 
 			));
 			offices.add(new Office(
-					"Aevum Salgótarján füleki",
+					"Rex-Humánum - Salgótarján",
 					"Magyarország, Salgótarján 3100, Füleki út 12.",
 					48.11014806271663,
 					19.811604520154262,
@@ -255,10 +270,11 @@ public class DemoApplication {
 					"Salgótarján",
 					"Füleki út 12.",
 					"hu-no",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://www.rexhumanum.hu"
 			));
 			offices.add(new Office(
-					"Szomorúfűz Nyíregyháza Dózsa",
+					"Szomorúfűz Temetkezés - Nyíregyháza",
 					"Magyarország, Nyíregyháza 4400, Dózsa György u. 70.",
 					47.96327969938218,
 					21.720807950572443,
@@ -268,10 +284,11 @@ public class DemoApplication {
 					"Nyíregyháza",
 					"Dózsa György u. 70.",
 					"hu-ny",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"https://nyiregyhaza.temetkezes.hu"
 			));
 			offices.add(new Office(
-					"Aevum Békéscsaba Munkácsy",
+					"Aevum Temetkezés - Békéscsaba",
 					"Magyarország, Békéscsaba 5600, Munkácsy utca 9.",
 					46.67829646726883,
 					21.096902959533715,
@@ -281,7 +298,8 @@ public class DemoApplication {
 					"Békéscsaba",
 					"Munkácsy utca 9.",
 					"hu-bc",
-					companyRepository.findAll().get(1)
+					companyRepository.findAll().get(1),
+					"www.bekestemetkezes.hu"
 			));
 			officeRepository.saveAll(offices);
 		}

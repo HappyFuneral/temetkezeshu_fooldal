@@ -13,8 +13,11 @@ const Office = ({ office }) => {
   return (
       <div
           className="mb-2 flex flex-wrap md:flex-nowrap shadow-lg mx-auto max-w-full group cursor-pointer transform duration-500 hover:-translate-y-1">
-          <img className="w-full md:w-52"
-               src="https://i.ibb.co/Kr4b0zJ/152013403-10158311889099633-8423107287930246533-o.jpg" alt=""/>
+          <div className="items-center">
+              <img className="size-48 md:w-52"
+                   src="https://i.ibb.co/Kr4b0zJ/152013403-10158311889099633-8423107287930246533-o.jpg" alt=""/>
+
+          </div>
           <div className="w-full">
               <div className="p-5 pb-10">
                   <h1 className="text-2xl font-semibold text-gray-800 mt-4">

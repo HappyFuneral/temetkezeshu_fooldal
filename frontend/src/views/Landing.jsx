@@ -17,7 +17,7 @@ const Landing = () => {
                          backgroundSize: "cover",
 
             }}>
-              <div className="md:w-full sm:w-full lg:w-4/5 container lg:mx-auto md:mx-mx-2 sm:-mx-2 ">
+              <div className="w-full">
                   <MapG className=""/>
               </div>
 

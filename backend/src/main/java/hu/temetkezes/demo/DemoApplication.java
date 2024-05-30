@@ -299,7 +299,7 @@ public class DemoApplication {
 					"Munkácsy utca 9.",
 					"hu-bc",
 					companyRepository.findAll().get(1),
-					"www.bekestemetkezes.hu"
+					"https://www.bekestemetkezes.hu"
 			));
 			officeRepository.saveAll(offices);
 		}

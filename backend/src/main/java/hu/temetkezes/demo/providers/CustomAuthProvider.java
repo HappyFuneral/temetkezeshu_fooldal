@@ -1,5 +1,5 @@
 package hu.temetkezes.demo.providers;
-/*
+
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,4 +23,6 @@ public class CustomAuthProvider implements AuthenticationProvider, Serializable 
             return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
         }
 }
-*/
+
+
+

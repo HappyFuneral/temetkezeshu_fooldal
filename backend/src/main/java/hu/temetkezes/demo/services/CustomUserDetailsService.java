@@ -1,4 +1,4 @@
-/*package hu.temetkezes.demo.services;
+package hu.temetkezes.demo.services;
 
 import hu.temetkezes.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +28,10 @@ public class CustomUserDetailsService implements UserDetailsService {
                         u.isActive(),
                         u.isActive(),
                         AuthorityUtils.createAuthorityList(
-                                u.getRoles()
-                                        .stream()
-                                        .map(r -> "ROLE_" + r.getName().toUpperCase())
-                                        .toList()
-                                        .toArray(new String[]{}))))
+                               u.getRole()
+                                )))
                 .orElseThrow(() -> new UsernameNotFoundException("No user with "
                         + "the name " + username + "was found in the database"));
     }
 
 }
-
- */

@@ -7,12 +7,14 @@ import hu.temetkezes.demo.models.User;
 import hu.temetkezes.demo.repository.CompanyRepository;
 import hu.temetkezes.demo.repository.OfficeRepository;
 //import hu.temetkezes.demo.services.UserService;
+import hu.temetkezes.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /*
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +32,8 @@ public class DemoApplication {
     @Autowired
     private CompanyRepository companyRepository;
 
+	@Autowired
+	private UserRepository userRepository;
 
 	/*
 	@Bean
@@ -66,6 +70,7 @@ public class DemoApplication {
 			companies.add(new Company("Aevum Temetkezés","aevum"));
 			companyRepository.saveAll(companies);
 		}
+
 		if (officeRepository.count() == 0) {
 			ArrayList<Office> offices = new ArrayList<>();
 			offices.add(new Office(
@@ -301,7 +306,20 @@ public class DemoApplication {
 					companyRepository.findAll().get(1),
 					"https://www.bekestemetkezes.hu"
 			));
+
 			officeRepository.saveAll(offices);
+		}
+		if (userRepository.count() == 0 ){
+			User user = new User();
+			user.setName("Spring Blog");
+			user.setUsername("admin");
+			user.setEmail("test@test.com");
+			user.setPassword(new BCryptPasswordEncoder().encode("test123"));
+			user.setRole("SUPER_ADMIN");
+			user.setBanned(false);
+			user.setConfirmEmail(true);
+			user.setActive(true);
+			userRepository.save(user);
 		}
 	}
 }

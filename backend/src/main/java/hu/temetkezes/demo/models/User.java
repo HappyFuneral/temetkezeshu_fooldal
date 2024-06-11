@@ -16,10 +16,12 @@ import java.util.List;
 @ToString
 public class User extends BaseEntity{
 
+    private String name;
     private String username;
     private String password;
-    @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
-    private List<Role> roles;
+    private String role;
+    private String email;
     private boolean active;
-
+    private boolean banned;
+    private boolean confirmEmail;
 }

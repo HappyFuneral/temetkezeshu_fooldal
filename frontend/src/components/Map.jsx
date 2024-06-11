@@ -10,36 +10,36 @@ export default function MapG() {
 
         svg {
             stroke: #ffffff;
-
+            filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
             // All layers are just path elements
 
             path {
-                fill: #9a8e8e;
+                fill: rgba(154, 142, 142, 0.75);
                 cursor: pointer;
                 outline: none;
 
                 // When a layer is hovered
 
                 &:hover {
-                    fill: rgba(102, 99, 99);
+                    fill: rgba(102, 99, 99, 0.75);
                 }
 
                 // When a layer is focused.
 
                 &:focus {
-                    fill: rgb(90, 84, 84);
+                    fill: rgb(90, 84, 84, 0.75);
                 }
 
                 // When a layer is 'checked' (via checkedLayers prop).
 
                 &[aria-checked='true'] {
-                    fill: rgb(114, 114, 122);
+                    fill: rgb(114, 114, 122, 0.75);
                 }
 
                 // When a layer is 'selected' (via currentLayers prop).
 
                 &[aria-checked='true']:hover {
-                    fill: rgb(52, 52, 58);
+                    fill: rgb(52, 52, 58, 0.75);
                 }
 
                 // You can also highlight a specific layer via it's id
@@ -75,8 +75,20 @@ export default function MapG() {
     return (
         <div className="items-center">
             <div className="w-full container mx-auto mt-3">
-                <p className="text-center lg:text-3xl md:text-2xl sm:text-xl mb-3">Választható
-                    szöveg</p>
+                <select id="countries"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Válassz megyét</option>
+                      {
+                          codes.map((code) => {
+                               return (
+                                   <option>{code}</option>
+                               )
+                              }
+                          )
+                      }
+                  </select>
+
+
                 <p className="text-left lg:text-3xl md:text-2xl sm:text-xl mb-2">Iroda: {hovered &&
                     <code>{hovered}</code>}</p>
             </div>

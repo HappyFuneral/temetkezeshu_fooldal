@@ -9,14 +9,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
 
-    private final String frontend = "http://localhost";
-    private final String backend = "http://localhost/api";
+    private final String frontend = "localhost";
+    private final String backend = "vivite.hu/api";
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(backend, frontend);
-
-
     }
 }

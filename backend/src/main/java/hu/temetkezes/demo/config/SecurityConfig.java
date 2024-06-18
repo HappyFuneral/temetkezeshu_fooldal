@@ -22,9 +22,7 @@ public class SecurityConfig
                                 .requestMatchers(
                                         "/api/offices",
                                         "/api/offices/*",
-                                        "/api/offices/getbycode/*",
-                                        "/users",
-                                        "/login"
+                                        "/api/offices/getbycode/*"
                                 ).
                         permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())

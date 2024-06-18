@@ -10,7 +10,7 @@ const Landing = () => {
   // get only men's and women's clothing category
     return (
         <div className="text-white">
-            <section className="grid w-full min-h-screen items-center justify-items-center"
+            <section className="grid mx-auto w-auto min-h-screen items-center justify-items-center"
                      >
                 <div className="w-full min-h-screen" style={{
                     backgroundImage: `url(${bg})`,
@@ -23,12 +23,13 @@ const Landing = () => {
                     height: "100%"
 
                 }}></div>
-              <div className="w-full" style={{
-
+              <div className="w-full lg:w-3/12" style={{
               }}>
                   <MapG className=""/>
               </div>
-
+                <div>
+                    
+                </div>
             </section>
       </div>
     );

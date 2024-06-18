@@ -5,11 +5,9 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: Aevum176942
       MYSQL_USER: root2
       MYSQL_PASSWORD: Aevum176942
       MYSQL_DATABASE: temetkezes
-
   spring-boot-app:
     build:
       context: ./backend

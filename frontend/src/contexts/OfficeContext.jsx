@@ -11,12 +11,17 @@ const OfficeProvider = ({ children }) => {
 
     const [loading,setLoading] = useState(false)
     const [codes, setCodes] = useState([])
+    const [regions,setRegions] = useState([])
+    const [regionCode,setRegionCode] = useState([])
 
-  useEffect(()=>{
-      getOffices()
-      getCodes()
 
-  },[])
+    useEffect(()=>{
+        getOffices()
+        getRegionCode()
+        getCodes()
+        getRegions()
+    },[])
+
 
   const getOffices = () => {
       setLoading(true)
@@ -28,6 +33,16 @@ const OfficeProvider = ({ children }) => {
           setLoading(false)
       })
   }
+    const getRegions = () => {
+        setLoading(true)
+        axiosClient.get("/offices/regions")
+            .then(({data}) => {
+                setLoading(false)
+                setRegions(data)
+            }).catch(() =>{
+            setLoading(false)
+        })
+    }
   const getCodes = () => {
       setLoading(true)
       axiosClient.get("/offices/codes")
@@ -38,9 +53,21 @@ const OfficeProvider = ({ children }) => {
           setLoading(false)
       })
   }
+    const getRegionCode = () => {
+        setLoading(true)
+        axiosClient.get("/offices/regionsAndCodes")
+            .then(({data}) => {
+                setLoading(false)
+                setRegionCode(data)
+            }).catch(() =>{
+            setLoading(false)
+        })
+    }
+
+
 
   return (
-    <OfficeContext.Provider value={{ offices,codes }}>
+    <OfficeContext.Provider value={{ offices,codes,regionCode,regions }}>
       {children}
     </OfficeContext.Provider>
   );

@@ -23,9 +23,11 @@ public class SecurityConfig
                                         "/api/offices",
                                         "/api/offices/*",
                                         "/api/offices/getbycode/*",
-                                        "/users"
+                                        "/users",
+                                        "/login"
                                 ).
                         permitAll())
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .httpBasic(withDefaults());
         return http.build();
     }

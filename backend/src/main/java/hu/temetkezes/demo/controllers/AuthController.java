@@ -24,9 +24,10 @@ public class AuthController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/users")
-    public List<User> login(){
+    public List<User> users(){
         return userService.userList();
     }
+
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/register")
     public void register(){

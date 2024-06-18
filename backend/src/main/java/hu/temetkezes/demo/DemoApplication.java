@@ -1,13 +1,12 @@
 package hu.temetkezes.demo;
 
-import hu.temetkezes.demo.models.Company;
-import hu.temetkezes.demo.models.Office;
-import hu.temetkezes.demo.models.Role;
-import hu.temetkezes.demo.models.User;
+import hu.temetkezes.demo.models.*;
 import hu.temetkezes.demo.repository.CompanyRepository;
+import hu.temetkezes.demo.repository.FuneralServiceRepository;
 import hu.temetkezes.demo.repository.OfficeRepository;
 //import hu.temetkezes.demo.services.UserService;
 import hu.temetkezes.demo.repository.UserRepository;
+import hu.temetkezes.demo.services.FuneralServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -35,6 +34,8 @@ public class DemoApplication {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private FuneralServiceRepository funeralServiceRepository;
 	/*
 	@Bean
 	public CommandLineRunner setupDefaultUser(UserService service) {
@@ -80,7 +81,7 @@ public class DemoApplication {
 					19.082259008592498,
 					"Magyarország",
 					"1071",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Dembinszky utca 44",
 					"hu-bu",
@@ -95,7 +96,7 @@ public class DemoApplication {
 					19.066047925940623,
 					"Magyarország",
 					"1064",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Izabella utca 65",
 					"hu-bu",
@@ -109,7 +110,7 @@ public class DemoApplication {
 					19.238884639430985,
 					"Magyarország",
 					"1173",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Pesti út 41/A",
 					"hu-bu",
@@ -123,7 +124,7 @@ public class DemoApplication {
 					19.080378810594798,
 					"Magyarország",
 					"1096",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Lenhossék utca 33.",
 					"hu-bu",
@@ -137,7 +138,7 @@ public class DemoApplication {
 					19.04509812593893,
 					"Magyarország",
 					"1114",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Villanyi út 6.",
 					"hu-bu",
@@ -152,7 +153,7 @@ public class DemoApplication {
 					19.085216554775098,
 					"Magyarország",
 					"1096",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Ernő u. 30-34.",
 					"hu-bu",
@@ -166,7 +167,7 @@ public class DemoApplication {
 					19.02339759688433,
 					"Magyarország",
 					"1123",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Nagyenyed u. 1",
 					"hu-bu",
@@ -181,7 +182,7 @@ public class DemoApplication {
 					19.02339759688433,
 					"Magyarország",
 					"1123",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Nagyenyed u. 1",
 					"hu-bu",
@@ -196,7 +197,7 @@ public class DemoApplication {
 					19.110125808598365,
 					"Magyarország",
 					"1147",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Thököly út 167.",
 					"hu-bu",
@@ -211,7 +212,7 @@ public class DemoApplication {
 					19.112461183609113,
 					"Magyarország",
 					"1042",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Szivacs utca 5.",
 					"hu-bu",
@@ -226,7 +227,7 @@ public class DemoApplication {
 					19.07150345292552,
 					"Magyarország",
 					"1139",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Pap Károly u. 5.",
 					"hu-bu",
@@ -241,7 +242,7 @@ public class DemoApplication {
 					19.03342072594215,
 					"Magyarország",
 					"1032",
-					"Pest",
+					"Budapest",
 					"Budapest",
 					"Bécsi út 143.",
 					"hu-bu",
@@ -320,6 +321,17 @@ public class DemoApplication {
 			user.setConfirmEmail(true);
 			user.setActive(true);
 			userRepository.save(user);
+		}
+		if (funeralServiceRepository.count() == 0 ) {
+			ArrayList<FuneralService> funeralServices = new ArrayList<>();
+			funeralServices.add(new FuneralService("Hamvasztás urnakiadás", "hamvurn", ""));
+			funeralServices.add(new FuneralService("Hamvak szórása", "hamvszor", ""));
+			funeralServices.add(new FuneralService("Hamvasztásos temetés", "hamvtem", ""));
+			funeralServices.add(new FuneralService("Hajós temetés", "hajtem", ""));
+			funeralServices.add(new FuneralService("Koporsós temetés", "koptem", ""));
+			funeralServices.add(new FuneralService("Halottszállítás", "halszal", ""));
+			funeralServices.add(new FuneralService("Nemzetközi temetés", "nemtem", ""));
+			funeralServiceRepository.saveAll(funeralServices);
 		}
 	}
 }

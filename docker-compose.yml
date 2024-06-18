@@ -1,6 +1,7 @@
 version: '3'
 services:
   mysql:
+    container_name: temdb
     image: mysql:8.0
     ports:
       - "3307:3306"
@@ -9,6 +10,7 @@ services:
       MYSQL_PASSWORD: Aevum176942
       MYSQL_DATABASE: temetkezes
   spring-boot-app:
+    container_name: javabackend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -20,10 +22,17 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/temetkezes
       SPRING_DATASOURCE_USERNAME: root2
       SPRING_DATASOURCE_PASSWORD: Aevum176942
-
   react-app:
+    container_name: reactfrontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "4000:4000"
+    links:
+      - "spring-boot-app"
+  proxy:
+    build: ./proxy
+    container_name: app-prx
+    ports:
+      - "80:80"

@@ -9,13 +9,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer {
 
-    private final String frontend = "http://192.168.22.14:4000";
-    private final String backend = "http://192.168.22.14:8080";
+    private final String frontend = "http://localhost";
+    private final String backend = "http://localhost/api";
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(backend, frontend).allowedOrigins("http://localhost:8080", "http://localhost:4000");
+                .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(backend, frontend);
 
 
     }

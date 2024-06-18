@@ -315,7 +315,7 @@ public class DemoApplication {
 			user.setName("Spring Blog");
 			user.setUsername("admin");
 			user.setEmail("test@test.com");
-			user.setPassword(new BCryptPasswordEncoder().encode("test123"));
+			user.setPassword(new BCryptPasswordEncoder().encode("Aevum123789!"));
 			user.setRole("SUPER_ADMIN");
 			user.setBanned(false);
 			user.setConfirmEmail(true);

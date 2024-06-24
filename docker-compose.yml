@@ -4,12 +4,22 @@ services:
     container_name: temdb
     image: mysql:8.0
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: Aevum176942
       MYSQL_USER: root2
       MYSQL_PASSWORD: Aevum176942
       MYSQL_DATABASE: temetkezes
+  phpmyadmin:
+    image: phpmyadmin:5.2.0
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+        PMA_HOST: temdb
+        PMA_PORT: 3306
+    ports:
+        - 81:80
   spring-boot-app:
     container_name: javabackend
     build:
@@ -37,3 +47,7 @@ services:
     container_name: app-prx
     ports:
       - "80:80"
+    depends_on:
+      - react-app
+      - spring-boot-app
+      - phpmyadmin

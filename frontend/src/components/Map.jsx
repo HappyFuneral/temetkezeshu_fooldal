@@ -61,7 +61,7 @@ export default function MapG() {
 
     let navigate = useNavigate();
     const routeChange = (to) => {
-        navigate("/landing/map/" + to);
+        navigate("/map/" + to);
     }
 
 

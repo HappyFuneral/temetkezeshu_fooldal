@@ -7,7 +7,7 @@ export default function DefaultLayout() {
     const {user, token, setUser, setToken} = useStateContext()
 
     if (!token) {
-        return <Navigate to="/landing"/>
+        return <Navigate to="/"/>
         
     } else {
         const Logout = (ev) => {

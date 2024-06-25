@@ -14,12 +14,12 @@ const router = createBrowserRouter([
         element: <GuestLayout/>,
         children: [
             {
-                path: '/landing',
+                path: '/',
                 element: <Landing/>
             },
 
             {
-                path: '/landing/map/:code',
+                path: '/map/:code',
                 element: <RegionMap/>
             },
 

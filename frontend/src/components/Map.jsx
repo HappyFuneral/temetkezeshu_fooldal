@@ -250,7 +250,7 @@ export default function MapG() {
                             regionCode.map(code => {
                                     return (
                                         <Dropdown.Item as="a"
-                                                       href={"/landing/map/" + code.code}>{code.region}</Dropdown.Item>
+                                                       href={"/map/" + code.code}>{code.region}</Dropdown.Item>
                                     )
                                 }
                             )

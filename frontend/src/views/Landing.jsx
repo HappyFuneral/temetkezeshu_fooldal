@@ -23,7 +23,7 @@ const Landing = () => {
                     height: "100%"
 
                 }}></div>
-              <div className="w-full lg:w-3/12" style={{
+              <div className="w-full lg:w-4/12 md:w-3/5" style={{
               }}>
                   <MapG className=""/>
               </div>

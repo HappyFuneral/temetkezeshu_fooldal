@@ -7,18 +7,25 @@ import {OfficeContext} from "../contexts/OfficeContext.jsx";
 
 import {Dropdown} from "flowbite-react";
 import {DropdownItem} from "flowbite-react";
+import ReactDOM from "react-dom/client";
 
 export default function MapG() {
     const Map = styled.div`
         margin: 1rem auto;
 
         svg {
-            stroke: #ffffff;
+            stroke: rgba(35, 35, 35, 0.09);
             filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
             // All layers are just path elements
 
+            text {
+                font: italic 11px sans-serif;
+                stroke: none;
+                fill: rgba(255, 255, 255, 0.71);
+            }
+
             path {
-                fill: rgba(154, 142, 142, 0.75);
+                fill: rgba(120, 120, 120, 0.75);
                 cursor: pointer;
                 outline: none;
 
@@ -31,13 +38,13 @@ export default function MapG() {
                 // When a layer is focused.
 
                 &:focus {
-                    fill: rgb(90, 84, 84, 0.75);
+                    fill: rgba(87, 80, 80, 0.75);
                 }
 
                 // When a layer is 'checked' (via checkedLayers prop).
 
                 &[aria-checked='true'] {
-                    fill: rgb(114, 114, 122, 0.75);
+                    fill: rgba(145, 144, 144, 0.82);
                 }
 
                 // When a layer is 'selected' (via currentLayers prop).
@@ -72,6 +79,7 @@ export default function MapG() {
         onBlur: ({target}) => setFocused(target.attributes.name.value),
         onClick: ({target}) => routeChange(target.attributes.id.value),
     };
+
 
 
     let nzMap = {
@@ -240,12 +248,32 @@ export default function MapG() {
             "d": "m 65.661522,227.67412 1.39,-0.17 0.87,2.13 1.95,0.28 1.07,1.3 -0.46,1.5 1.72,2.76 -0.04,2.43 -0.89,0.73 0.63,3.44 -3.39,0.89 -3.7,-0.34 -0.92,1.33 -1.35,0.28 -1.69,-2.23 1.66,-2.65 -1.64,-2.46 0.64,-3.8 -1.24,-1.16 0.21,-1.92 0.77,-2.64 z"
         }]
     }
+
+    let map = <VectorMap id="hungarymap" className="max-h-screen w-full" {...nzMap} layerProps={layerProps}
+                         checkedLayers={codes} currentLayers={['']}>
+        <text x="410" y="240">Békés</text>
+        <text x="260" y="180">Pest</text>
+        <text x="265" y="270">Bács-Kiskun</text>
+        <text x="280" y="90">Nográd</text>
+        <text x="350" y="275">Csongrád</text>
+        <text x="355" y="175">Jász-Nagykun-</text>
+        <text x="376" y="188">Szolnok</text>
+        <text x="400" y="45">Borsod-Abaúj-Zemplén</text>
+        <text x="348" y="120">Heves</text>
+        <text x="450" y="145">Hajdú-Bihar</text>
+        <text x="200" y="190">Fejér</text>
+        <text x="175" y="125">Komárom-</text>
+        <text x="175" y="138">Esztergom</text>
+        <text x="195" y="280">Tolna</text>
+    </VectorMap>
+
+
     return (
         <div className="items-center">
-            <div className="container mx-auto mt-3">
+        <div className="container mx-auto mt-3">
 
                 <div className="grid justify-items-center mb-3 mt-3">
-                    <Dropdown label="Válassz megyét">
+                    <Dropdown className="bg-gray-900" label="Válassz megyét">
                         {
                             regionCode.map(code => {
                                     return (
@@ -259,14 +287,11 @@ export default function MapG() {
                     </Dropdown>
                 </div>
 
-                <p className="text-left lg:text-3xl md:text-2xl sm:text-xl mb-2">Iroda: {hovered &&
-                    <code>{hovered}</code>}</p>
             </div>
 
 
             <Map className="h-2/3 grid justify-items-center">
-                <VectorMap id="hungarymap" className="max-h-screen w-full" {...nzMap} layerProps={layerProps}
-                           checkedLayers={codes} currentLayers={['']}/>
+                {map}
             </Map>
         </div>
 

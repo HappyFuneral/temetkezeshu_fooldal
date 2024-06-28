@@ -10,6 +10,10 @@ import {DropdownItem} from "flowbite-react";
 import ReactDOM from "react-dom/client";
 
 export default function MapG() {
+    const button = styled.button`
+    
+        background: #555555;
+    `
     const Map = styled.div`
         margin: 1rem auto;
 
@@ -19,7 +23,7 @@ export default function MapG() {
             // All layers are just path elements
 
             text {
-                font: italic 11px sans-serif;
+                font: italic 10px sans-serif;
                 stroke: none;
                 fill: rgba(255, 255, 255, 0.71);
             }
@@ -251,20 +255,29 @@ export default function MapG() {
 
     let map = <VectorMap id="hungarymap" className="max-h-screen w-full" {...nzMap} layerProps={layerProps}
                          checkedLayers={codes} currentLayers={['']}>
-        <text x="410" y="240">Békés</text>
-        <text x="260" y="180">Pest</text>
+        <text x="420" y="247">Békés</text>
+        <text x="290" y="177">Pest</text>
         <text x="265" y="270">Bács-Kiskun</text>
         <text x="280" y="90">Nográd</text>
-        <text x="350" y="275">Csongrád</text>
-        <text x="355" y="175">Jász-Nagykun-</text>
+        <text x="350" y="282">Csongrád</text>
+        <text x="357" y="175">Jász-Nagykun-</text>
         <text x="376" y="188">Szolnok</text>
         <text x="400" y="45">Borsod-Abaúj-Zemplén</text>
-        <text x="348" y="120">Heves</text>
+        <text x="348" y="117">Heves</text>
         <text x="450" y="145">Hajdú-Bihar</text>
-        <text x="200" y="190">Fejér</text>
+        <text x="200" y="195">Fejér</text>
         <text x="175" y="125">Komárom-</text>
-        <text x="175" y="138">Esztergom</text>
+        <text x="175" y="136">Esztergom</text>
+        <text x="63" y="140">Győr-Moson-Sopron</text>
         <text x="195" y="280">Tolna</text>
+        <text x="470" y="87">Szabolcs-Szatmár-Bereg</text>
+        <text x="170" y="335">Baranya</text>
+        <text x="60" y="186">Vas</text>
+        <text x="120" y="188">Veszprém</text>
+        <text x="56" y="251">Zala</text>
+        <text x="117" y="283">Somogy</text>
+
+
     </VectorMap>
 
 
@@ -273,7 +286,7 @@ export default function MapG() {
         <div className="container mx-auto mt-3">
 
                 <div className="grid justify-items-center mb-3 mt-3">
-                    <Dropdown className="bg-gray-900" label="Válassz megyét">
+                    <Dropdown styles={button} className="bg-gray-900" label="Válassz megyét">
                         {
                             regionCode.map(code => {
                                     return (

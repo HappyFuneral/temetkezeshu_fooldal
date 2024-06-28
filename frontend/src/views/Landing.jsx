@@ -16,6 +16,7 @@ const Landing = () => {
                     backgroundImage: `url(${bg})`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
+                    backgroundPosition: "center center",
                     zIndex: "-1",
                     position: "absolute",
                     top: "0px",

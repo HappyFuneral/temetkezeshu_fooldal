@@ -18,25 +18,25 @@ export default function MapG() {
         margin: 1rem auto;
 
         svg {
-            stroke: rgba(35, 35, 35, 0.09);
+            stroke: rgba(255, 255, 255, 0.09);
             filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
             // All layers are just path elements
 
             text {
                 font: italic 10px sans-serif;
                 stroke: none;
-                fill: rgba(255, 255, 255, 0.71);
+                fill: rgba(255, 255, 255, 0.9);
             }
 
             path {
-                fill: rgba(120, 120, 120, 0.75);
+                fill: rgba(93, 109, 134, 0.72);
                 cursor: pointer;
                 outline: none;
 
                 // When a layer is hovered
 
                 &:hover {
-                    fill: rgba(102, 99, 99, 0.75);
+                    fill: rgba(73, 93, 125, 0.72);
                 }
 
                 // When a layer is focused.
@@ -48,13 +48,13 @@ export default function MapG() {
                 // When a layer is 'checked' (via checkedLayers prop).
 
                 &[aria-checked='true'] {
-                    fill: rgba(145, 144, 144, 0.82);
+                    fill: rgba(73, 93, 125, 0.72);
                 }
 
                 // When a layer is 'selected' (via currentLayers prop).
 
                 &[aria-checked='true']:hover {
-                    fill: rgb(52, 52, 58, 0.75);
+                    fill: rgba(37, 53, 79, 0.72);
                 }
 
                 // You can also highlight a specific layer via it's id

@@ -11,36 +11,36 @@ import java.util.List;
 @Service
 public class CompanyServImpl implements CompanyService
 {
-    private final CompanyRepository companyRepository;
+private final CompanyRepository companyRepository;
 
-    @Autowired
-    public CompanyServImpl(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
+@Autowired
+public CompanyServImpl(CompanyRepository companyRepository) {
+    this.companyRepository = companyRepository;
+}
 
 
-    @Override
-    public Company getById(Long id) {
-        return companyRepository.findById(id).orElse(null);
-    }
+@Override
+public Company getById(Long id) {
+    return companyRepository.findById(id).orElse(null);
+}
 
-    @Override
-    public void save(Company company) {
-        companyRepository.save(company);
-    }
+@Override
+public void save(Company company) {
+    companyRepository.save(company);
+}
 
-    @Override
-    public void update(Company company) {
-        companyRepository.save(company);
-    }
+@Override
+public void update(Company company) {
+    companyRepository.save(company);
+}
 
-    @Override
-    public void delete(Long id) {
-        companyRepository.deleteById(id);
-    }
+@Override
+public void delete(Long id) {
+    companyRepository.deleteById(id);
+}
 
-    @Override
-    public List<Company> getAll() {
-        return companyRepository.findAll();
-    }
+@Override
+public List<Company> getAll() {
+    return companyRepository.findAll();
+}
 }

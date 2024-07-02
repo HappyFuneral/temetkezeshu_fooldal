@@ -29,32 +29,32 @@ export default function MapG() {
             }
 
             path {
-                fill: rgba(93, 109, 134, 0.72);
+                fill: rgba(80, 81, 83, 0.72);
                 cursor: pointer;
                 outline: none;
 
                 // When a layer is hovered
 
                 &:hover {
-                    fill: rgba(73, 93, 125, 0.72);
+                    fill: rgba(107, 107, 108, 0.72);
                 }
 
                 // When a layer is focused.
 
                 &:focus {
-                    fill: rgba(87, 80, 80, 0.75);
+                    fill: rgba(145, 139, 139, 0.75);
                 }
 
                 // When a layer is 'checked' (via checkedLayers prop).
 
                 &[aria-checked='true'] {
-                    fill: rgba(73, 93, 125, 0.72);
+                    fill: rgba(119, 119, 119, 0.72);
                 }
 
                 // When a layer is 'selected' (via currentLayers prop).
 
                 &[aria-checked='true']:hover {
-                    fill: rgba(37, 53, 79, 0.72);
+                    fill: rgba(55, 55, 55, 0.72);
                 }
 
                 // You can also highlight a specific layer via it's id

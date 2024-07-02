@@ -82,6 +82,12 @@ public class OfficeController {
         }
         return regions;
     }
+
+    @GetMapping("/getRegionByCode/{code}")
+    public RegionCode getRegionByCode(@PathVariable String code){
+        return getAllRegionAndCode().stream().filter(regionCode -> Objects.equals(regionCode.getCode(), code)).toList().getFirst();
+    }
+
     public void addOffice(@RequestBody Office office) {
         officeService.saveOffice(office);
     }

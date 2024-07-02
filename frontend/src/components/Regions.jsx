@@ -10,6 +10,7 @@ import MapComponent from "./CodeMap.jsx";
 
 export const RegionMap = () => {
     const {code}= useParams()
+    const [region,setRegion] = useState([])
     const [offices,setOffices] = useState([])
     const [selectedLocation, setSelectedLocation] = useState({
         lat: 47.497746750606524,
@@ -18,10 +19,23 @@ export const RegionMap = () => {
 
     useEffect(() => {
         getOffices()
+        getRegions()
 
-    }, [ offices]);
+    }, [offices]);
 
 
+
+    const getRegions = async () =>{
+        await axiosClient.get("/offices/getRegionByCode/"+code)
+            .then(({data}) => {
+                setRegion(data)
+
+            }).catch((err) => {
+                console.log(err)
+            })
+
+
+    }
 
     const  getOffices  =  async () => {
         await axiosClient.get("/offices/getbycode/"+code)
@@ -34,17 +48,25 @@ export const RegionMap = () => {
     }
 
     return (
-        <div className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
-            <div className="overflow-y-scroll overflow-visible h-screen w-full antialiased">
-                {offices.map((office) => {
-                    return (
-                        <Office  office={office} key={office.id}/>
-                    );
-                })}
+        <div>
+            <div className="w-full bg-gray-700">
+                <div className="w-1/2 text-white">
+                    <p> Térkép {">"} {region.region} </p>
+                </div>
             </div>
-            <MapComponent  selectedLocation={selectedLocation} offices={offices}/>
+            <div className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
 
+                <div className="overflow-y-scroll overflow-visible h-screen w-full antialiased">
+                    {offices.map((office) => {
+                        return (
+                            <Office office={office} key={office.id}/>
+                        );
+                    })}
+                </div>
+                <MapComponent selectedLocation={selectedLocation} offices={offices}/>
+            </div>
         </div>
+
 
     );
 }

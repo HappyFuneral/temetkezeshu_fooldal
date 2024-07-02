@@ -1,6 +1,7 @@
 import React from "react";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import Office from "./Office.jsx";
+import mapicon from "../img/mapicon.png";
 
 const MapComponent = ({ selectedLocation, offices }) => {
     const { isLoaded, loadError } = useLoadScript({
@@ -27,7 +28,7 @@ const MapComponent = ({ selectedLocation, offices }) => {
                     return (
                         <MarkerF
                             position={{lat: office.latitude, lng: office.longitude}}
-                            icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
+                            icon={mapicon}
                         />
                     );
                 })}

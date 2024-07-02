@@ -72,7 +72,7 @@ export default function MapG() {
 
     let navigate = useNavigate();
     const routeChange = (to) => {
-        navigate("/map/" + to);
+        navigate("/map/regions/" + to);
     }
 
 
@@ -291,7 +291,7 @@ export default function MapG() {
                             regionCode.map(code => {
                                     return (
                                         <Dropdown.Item as="a"
-                                                       href={"/map/" + code.code}>{code.region}</Dropdown.Item>
+                                                       href={"/map/regions/" + code.code}>{code.region}</Dropdown.Item>
                                     )
                                 }
                             )

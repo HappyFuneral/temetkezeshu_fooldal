@@ -6,33 +6,23 @@ import Signup from "./views/Signup.jsx";
 import Landing from "./views/Landing.jsx";
 
 import {RegionMap} from "./components/Regions.jsx";
+import RegionLayout from "./components/RegionLayout.jsx";
 
 const router = createBrowserRouter([
-
     {
-        path: '/',
-        element: <GuestLayout/>,
+        path: "/",
+        element: <RegionLayout/>,
         children: [
             {
                 path: '/',
                 element: <Landing/>
             },
-
             {
-                path: '/map/:code',
+                path: '/map/regions/:code',
                 element: <RegionMap/>
             },
-
-            {
-                path: '/login',
-                element: <Login/>
-            },
-            {
-                path: '/signup',
-                element: <Signup/>
-            }
         ]
-    },
+    }
 ]);
 
 export default router;

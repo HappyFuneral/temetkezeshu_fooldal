@@ -161,7 +161,7 @@ public class DemoApplication {
 					"https://www.budapest-temetkezes.hu"
 			));
 			offices.add(new Office(
-					"Szomorúfűz Temetkezés - Budai",
+					"Lélekhajó Temetkezés",
 					"Magyarország, Budapest 1123, Nagyenyed u. 1.",
 					47.498757248209564,
 					19.02339759688433,
@@ -175,21 +175,7 @@ public class DemoApplication {
 					"https://www.budapest-temetkezes.hu"
 
 			));
-			offices.add(new Office(
-					"Szomorúfűz Temetkezés - Nagyenyed",
-					"Magyarország, Budapest 1123, Nagyenyed u. 1.",
-					47.498757248209564,
-					19.02339759688433,
-					"Magyarország",
-					"1123",
-					"Budapest",
-					"Budapest",
-					"Nagyenyed u. 1",
-					"hu-bu",
-					companyRepository.findAll().get(1),
-					"https://www.budapest-temetkezes.hu"
 
-			));
 			offices.add(new Office(
 					"Szomorúfűz Temetkezés - Thököly",
 					"Magyarország, Budapest 1147, Thököly út 167.",

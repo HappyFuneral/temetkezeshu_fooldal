@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import Office from "./Office.jsx";
 import mapicon from "../img/mapicon.png";
 
-const MapComponent = ({ selectedLocation, offices }) => {
+const MapComponent = ({ selectedLocation, offices,zoom }) => {
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyDWtnOf9mfiuz8Y8FZU-UxeJCCVOe8KLFU",
     });
@@ -21,7 +21,7 @@ const MapComponent = ({ selectedLocation, offices }) => {
                     height: "100%",
                 }}
                 center={selectedLocation}
-                zoom={13}
+                zoom={zoom}
                 onLoad={onMapLoad}
             >
                 {offices.map((office) => {

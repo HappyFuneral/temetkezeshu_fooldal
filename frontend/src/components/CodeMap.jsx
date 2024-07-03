@@ -15,7 +15,7 @@ const MapComponent = ({ selectedLocation, offices,zoom }) => {
     if (!isLoaded) return "Maps";
 
     return (
-        <div className="h-screen" >
+        <div style={{height: "50vh"}}>
             <GoogleMap
                 mapContainerStyle={{
                     height: "100%",

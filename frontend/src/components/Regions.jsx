@@ -73,10 +73,10 @@ export const RegionMap = () => {
             </div>
             <div className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
 
-                <div className="overflow-y-scroll overflow-visible h-screen w-full antialiased">
+                <div className="overflow-y-scroll overflow-visible w-full antialiased" style={{height: "50vh"}}>
                     {offices.map((office) => {
                         return (
-                            <div onMouseEnter={() =>
+                            <div onClick={() =>
                             {
                                 setSelectedLocation({lat: office.latitude, lng: office.longitude})
                                 setZoom(17)

@@ -31,13 +31,6 @@ export const RegionMap = () => {
 
 
     const getRegions = async () =>{
-        await axiosClient.get("/offices/getRegionByCode/"+code)
-            .then(({data}) => {
-                setRegion(data)
-
-            }).catch((err) => {
-                console.log(err)
-            })
 
         await axiosClient.get("/offices/getbycode/"+code)
             .then(({data}) => {
@@ -46,6 +39,14 @@ export const RegionMap = () => {
             }).catch((err) => {
                 console.log(err)
             })
+        await axiosClient.get("/offices/getRegionByCode/"+code)
+            .then(({data}) => {
+                setRegion(data)
+
+            }).catch((err) => {
+                console.log(err)
+            })
+
         setLoaded(true)
     }
 

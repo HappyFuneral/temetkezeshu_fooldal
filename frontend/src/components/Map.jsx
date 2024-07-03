@@ -79,7 +79,7 @@ export default function MapG() {
     const layerProps = {
         onMouseEnter: ({target}) => setHovered(target.attributes.name.value),
         onMouseLeave: ({target}) => setHovered(target.attributes.name.value),
-        onFocus: ({target}) => routeChange(target.attributes.name.value),
+        onFocus: ({target}) => routeChange(target.attributes.id.value),
         onBlur: ({target}) => setFocused(target.attributes.name.value),
         onClick: ({target}) => routeChange(target.attributes.id.value),
     };

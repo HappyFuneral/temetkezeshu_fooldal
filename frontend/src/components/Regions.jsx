@@ -73,7 +73,7 @@ export const RegionMap = () => {
             </div>
             <div className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
 
-                <div className="overflow-y-scroll overflow-visible w-full antialiased" style={{height: "50vh"}}>
+                <div className="overflow-y-scroll overflow-visible w-full antialiased h-flexible">
                     {offices.map((office) => {
                         return (
                             <div onClick={() =>

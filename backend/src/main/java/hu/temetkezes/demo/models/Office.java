@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,7 +32,11 @@ public class Office {
     private String website;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JsonManagedReference
+    private Contact contacts;
+
+
+    @ManyToOne
     @JsonManagedReference
     private Company company;
 

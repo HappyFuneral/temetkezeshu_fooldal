@@ -29,20 +29,11 @@ const Office = ({ office }) => {
               </div>
               <div className="bg-blue-50 p-5">
                   <div className="sm:flex sm:justify-between">
-                      <div>
-                          <div className="text-lg text-gray-700">
-                              <span className="text-gray-900 font-bold">196 km</span> from Dhaka
-                          </div>
-
-                      </div>
                       <a
 
                           href={website} className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-gray-600 hover:bg-gray-500 font-bold text-white md:text-lg rounded-lg shadow-md">
                           Ugrás a weboldalra
                       </a>
-                  </div>
-                  <div className="mt-3 text-gray-600 text-sm md:text-sm">
-                      *Places to visit: Mahasthangarh, Vasu Bihar & Momo Inn
                   </div>
               </div>
           </div>

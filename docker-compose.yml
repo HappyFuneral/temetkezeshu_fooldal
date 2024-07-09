@@ -53,7 +53,3 @@ services:
     container_name: app-prx
     ports:
       - "80:80"
-    depends_on:
-      - react-app
-      - spring-boot-app
-      - phpmyadmin

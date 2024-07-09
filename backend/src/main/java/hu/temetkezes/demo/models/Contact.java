@@ -22,9 +22,16 @@ public class Contact {
     @GeneratedValue
     private Long id;
     private String type;
+    private String slug;
     private String contact;
     private String officeShortCode;
 
+    public Contact(String type, String contact,String officeShortCode, String slug){
+        setType(type);
+        setContact(contact);
+        setOfficeShortCode(officeShortCode);
+        setSlug(slug);
+    }
     public Contact(String type, String contact,String officeShortCode){
         setType(type);
         setContact(contact);

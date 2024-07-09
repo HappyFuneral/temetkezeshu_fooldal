@@ -1,11 +1,11 @@
 
-import Office from "./Office.jsx";
 import React, {useEffect, useRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {Link, useParams} from "react-router-dom";
 
 import {GoogleMap, InfoWindow, MarkerF, useLoadScript} from "@react-google-maps/api";
 import mapicon from "../img/mapicon.png";
+import bg from "../img/bg.jpg";
 
 
 export const RegionMap = () => {
@@ -26,7 +26,6 @@ export const RegionMap = () => {
         await axiosClient.get("/offices/getbycode/"+code)
             .then(({data}) => {
                 setOffices(data)
-
             }).catch((err) => {
                 console.log(err)
             })
@@ -44,8 +43,10 @@ export const RegionMap = () => {
 
     useEffect(() => {
 
-        if(!loaded)
+        if(!loaded) {
             getRegions()
+
+        }
 
     }, [offices]);
 
@@ -102,19 +103,116 @@ export const RegionMap = () => {
             <div className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
                 <div className="overflow-y-scroll overflow-visible w-full antialiased h-flexible">
                     {offices.map((office) => {
-                        return (
-                            <div onClick={() =>
-                            {
+                        const { id, location, name, website,contacts } = office;
 
-                                setSelectedLocation({lat: office.latitude, lng: office.longitude})
-                                setZoom(17)
-                                setSelectedMarker(office)
-                            }
-                            } >
-                                <Office office={office} key={office.id}/>
+                        return (
+                            <div>
+                                <div
+                                    className="mb-2 shadow-lg mx-auto max-w-full group transform duration-500 hover:-translate-y-1"
+
+                                >
+                                    <div className="w-full justify-items-center p-5" style={{
+                                        backgroundImage: `url('http://www.temetkezes.hu/assets/img/header-bg.jpg')`,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center center",
+                                        zIndex: "-1",
+                                        height: "28vh"
+
+                                    }}>
+                                        <h1 className="text-2xl text-center font-semibold text-gray-700 bg-white mt-4 mb-5">
+                                            {name}
+                                        </h1>
+
+
+                                    </div>
+
+
+                                    <div className="w-full">
+                                        <div className="p-5 pb-10">
+                                            <div
+                                                className="lg:text-xl text-center text-md cursor-pointer text-gray-700 mt-4 mb-5 leading-relaxed"
+                                                onClick={() => {
+
+                                                    setSelectedLocation({
+                                                        lat: office.latitude,
+                                                        lng: office.longitude
+                                                    })
+                                                    setZoom(17)
+                                                    setSelectedMarker(office)
+                                                }
+                                                }>
+                                                {location}
+                                            </div>
+                                            <div
+                                                className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 mt-3 mx-auto"
+                                            >
+
+                                                {contacts.map((c) => {
+
+                                                    switch (c.slug) {
+                                                        case "phone":
+                                                            return (
+                                                                <div
+                                                                    className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
+
+                                                                    <div className="text-right">
+                                                                        {c.type} ▶
+                                                                    </div>
+                                                                    <div className="pl-2 text-left">
+                                                                        <a href={"tel:" + c.contact}>
+                                                                            {c.contact}
+                                                                        </a>
+                                                                    </div>
+
+                                                                </div>
+                                                            )
+                                                        case "email":
+                                                            return (
+                                                                <div
+                                                                    className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                    <div className="text-right">
+                                                                        {c.type} ▶
+                                                                    </div>
+                                                                    <div className="pl-2 text-left">
+                                                                        <a href={"mailto:" + c.contact}>
+                                                                            {c.contact}
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            );
+                                                        default:
+                                                            return (
+                                                                <div
+                                                                    className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                    <div className="text-right">
+                                                                        {c.type} ▶
+                                                                    </div>
+                                                                    <div className="pl-2 text-left">
+                                                                        {c.contact}
+                                                                    </div>
+                                                                </div>
+                                                            );
+                                                    }
+
+                                                })}
+                                            </div>
+                                            <div className="mt-3 items-center text-center">
+
+                                                <a
+
+                                                    href={website}
+                                                    className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-gray-200 hover:bg-gray-300 font-bold text-center text-gray-700 md:text-lg rounded-lg shadow-md">
+                                                    Ugrás a weboldalra
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
-                                  );
+                        );
                     })}
                 </div>
                 <div className="h-flexible">
@@ -130,7 +228,7 @@ export const RegionMap = () => {
                             return (
                                 <MarkerF onClick={() => {
                                     setSelectedMarker(office)
-                                    setSelectedLocation ({lat: office.latitude, lng: office.longitude})
+                                    setSelectedLocation({lat: office.latitude, lng: office.longitude})
                                     setZoom(17)
                                 }}
                                          position={{lat: office.latitude, lng: office.longitude}}
@@ -139,10 +237,11 @@ export const RegionMap = () => {
                             );
                         })}
                         {selectedMarker &&
-                            <InfoWindow position={{lat: selectedMarker.latitude+0.000252, lng: selectedMarker.longitude}}
-                                        onCloseClick={() => {
-                                            setSelectedMarker()
-                                        }}>
+                            <InfoWindow
+                                position={{lat: selectedMarker.latitude + 0.000252, lng: selectedMarker.longitude}}
+                                onCloseClick={() => {
+                                    setSelectedMarker()
+                                }}>
                                 <>
                                     <h1>{selectedMarker.name}</h1>
                                     <p>{selectedMarker.location}</p>

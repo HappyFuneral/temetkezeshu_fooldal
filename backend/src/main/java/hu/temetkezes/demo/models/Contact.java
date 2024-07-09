@@ -2,6 +2,7 @@ package hu.temetkezes.demo.models;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,15 @@ public class Contact {
 
 
     @Id
+    @GeneratedValue
     private Long id;
-
+    private String type;
     private String contact;
+    private String officeShortCode;
+
+    public Contact(String type, String contact,String officeShortCode){
+        setType(type);
+        setContact(contact);
+        setOfficeShortCode(officeShortCode);
+    }
 }

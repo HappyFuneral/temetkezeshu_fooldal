@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -19,6 +20,7 @@ public class Office {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String shortCode;
 
     private String location;
     private double latitude;
@@ -31,16 +33,15 @@ public class Office {
     private String code;
     private String website;
 
-    @ManyToOne
+    @OneToMany
     @JsonManagedReference
-    private Contact contacts;
-
+    private List<Contact> contacts;
 
     @ManyToOne
     @JsonManagedReference
     private Company company;
 
-    public Office(String name, String location, double latitude, double longitude, String country, String postal, String region, String city, String address, String code, Company company, String website) {
+    public Office(String name, String shortCode, String location, double latitude, double longitude, String country, String postal, String region, String city, String address, String code, Company company, String website, List<Contact> contacts) {
         this.name = name;
         this.location = location;
         this.latitude = latitude;
@@ -52,8 +53,10 @@ public class Office {
         this.address = address;
         this.code = code;
         this.company = company;
+        setShortCode(shortCode);
         setWebsite(website);
-    }
+        setContacts(contacts);
 
+    }
 }
 

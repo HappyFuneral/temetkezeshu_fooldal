@@ -119,7 +119,7 @@ const Footer = () => {
           <div className="w-full bg-black/5 p-4 text-center">
               © 2024 Copyright:
               <a className="font-semibold" href=""
-              >Temetkezés</a
+              > Temetkezes</a
               >
           </div>
       </footer>

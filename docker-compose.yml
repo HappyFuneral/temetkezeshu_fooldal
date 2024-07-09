@@ -2,6 +2,7 @@ version: '3'
 services:
   mysql:
     container_name: temdb
+    restart: unless-stopped
     image: mysql:8.0
     ports:
       - "3306:3306"
@@ -10,9 +11,12 @@ services:
       MYSQL_USER: root2
       MYSQL_PASSWORD: Aevum176942
       MYSQL_DATABASE: temetkezes
+    volumes:
+      - "./data:/var/lib/mysql"
   phpmyadmin:
     image: phpmyadmin:5.2.0
     container_name: phpmyadmin
+    restart: unless-stopped
     links:
       - mysql
     environment:
@@ -35,6 +39,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: Aevum176942
   react-app:
     container_name: reactfrontend
+    restart: unless-stopped
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -44,6 +49,7 @@ services:
       - "spring-boot-app"
   proxy:
     build: ./proxy
+    restart: unless-stopped
     container_name: app-prx
     ports:
       - "80:80"

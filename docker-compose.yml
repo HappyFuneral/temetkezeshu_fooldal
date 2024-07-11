@@ -47,6 +47,24 @@ services:
       - "4000:4000"
     links:
       - "spring-boot-app"
+  onlinetemetkezes:
+    container_name: onlinetemetkezes
+    depends_on:
+      - mysql
+    image: wordpress:latest
+    restart: always
+    # Restart line controls the restart mode, meaning if the container stops running for any reason, it will restart the process immediately.
+    ports:
+      - "8000:80"
+      # The previous line defines the port that the WordPress container will use. After successful installation, the full path will look like this: http://localhost:8000
+    environment:
+      WORDPRESS_DB_HOST: temdb:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: Aevum176942
+      WORDPRESS_DB_NAME: onlinewpdb
+    # Similar to MySQL image variables, the last four lines define the main variables needed for the WordPress container to work properly with the MySQL container.
+    volumes:
+      [ "./onlinetemetkezes:/var/www/html" ]
   proxy:
     build: ./proxy
     restart: unless-stopped

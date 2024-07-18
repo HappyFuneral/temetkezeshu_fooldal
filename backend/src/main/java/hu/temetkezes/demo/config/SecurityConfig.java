@@ -23,8 +23,8 @@ public class SecurityConfig
                                         "/api/offices",
                                         "/api/offices/*",
                                         "/api/offices/getbycode/*",
-                                        "/api/offices/getRegionByCode/*"
-
+                                        "/api/offices/getRegionByCode/*",
+                                        "/api/funeralServices"
                                 ).
                         permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())

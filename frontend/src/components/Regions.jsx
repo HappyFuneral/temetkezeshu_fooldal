@@ -6,6 +6,7 @@ import {Link, useParams} from "react-router-dom";
 import {GoogleMap, InfoWindow, MarkerF, useLoadScript} from "@react-google-maps/api";
 import mapicon from "../img/mapicon.png";
 import bg from "../img/bg.jpg";
+import {Avatar, Carousel} from "flowbite-react";
 
 
 export const RegionMap = () => {
@@ -63,21 +64,8 @@ export const RegionMap = () => {
     }, []);
     const [selectedMarker, setSelectedMarker] = useState()
 
-
-
     if (loadError) return "Error";
     if (!isLoaded) return "Maps";
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <div>
@@ -100,104 +88,114 @@ export const RegionMap = () => {
                     </p>
                 </div>
             </div>
-            <div className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
-                <div className="overflow-y-scroll overflow-visible w-full antialiased h-flexible">
+            <div className="grid lg:grid-cols-4 lg:gap-2 grid-cols-1">
+                <div className="overflow-y-scroll overflow-visible w-full antialiased h-flexible col">
                     {offices.map((office) => {
                         const { id, location, name, website,contacts } = office;
 
                         return (
-                            <div>
+                            <div key={id}>
                                 <div
                                     className="mb-2 shadow-lg mx-auto max-w-full group transform duration-500 hover:-translate-y-1"
 
                                 >
-                                    <div className="w-full justify-items-center p-5" style={{
-                                        backgroundImage: `url('http://www.temetkezes.hu/assets/img/header-bg.jpg')`,
-                                        backgroundRepeat: "no-repeat",
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center center",
-                                        zIndex: "-1",
-                                        height: "28vh"
 
-                                    }}>
-                                        <h1 className="text-2xl text-center font-semibold text-gray-700 bg-white mt-4 mb-5">
-                                            {name}
-                                        </h1>
+                                    <h1 className="text-2xl text-center font-semibold text-gray-700 bg-white mt-4 mb-5">
+                                        {name}
+                                    </h1>
+                                    <div className="p-3">
+                                        <div
+                                            className="lg:text-xl text-center text-md cursor-pointer text-gray-700 mb-2 leading-relaxed"
+                                            onMouseEnter={() => {
+
+                                                setSelectedLocation({
+                                                    lat: office.latitude,
+                                                    lng: office.longitude
+                                                })
+                                                setZoom(17)
+                                                setSelectedMarker(office)
+                                            }
+                                            }
+                                            onClick={() => {
+
+                                                setSelectedLocation({
+                                                    lat: office.latitude,
+                                                    lng: office.longitude
+                                                })
+                                                setZoom(17)
+                                                setSelectedMarker(office)
+                                            }
+                                            }
+                                        >
+                                            <div className="">
+
+                                                <div>{location}</div>
+                                                <Avatar className="animate-bounce" alt="mapicon"
+                                                        img={mapicon}/>
+                                            </div>
+
+
+                                        </div>
 
 
                                     </div>
+                                    <div className="grid grid-cols-1 w-full justify-items-center lg:flex p-3">
 
 
-                                    <div className="w-full">
-                                        <div className="p-5 pb-10">
-                                            <div
-                                                className="lg:text-xl text-center text-md cursor-pointer text-gray-700 mt-4 mb-5 leading-relaxed"
-                                                onClick={() => {
+                                        <div
+                                            className="grid grid-cols-1 mx-auto"
+                                        >
 
-                                                    setSelectedLocation({
-                                                        lat: office.latitude,
-                                                        lng: office.longitude
-                                                    })
-                                                    setZoom(17)
-                                                    setSelectedMarker(office)
-                                                }
-                                                }>
-                                                {location}
-                                            </div>
-                                            <div
-                                                className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 mt-3 mx-auto"
-                                            >
+                                            {contacts.map((c) => {
 
-                                                {contacts.map((c) => {
+                                                switch (c.slug) {
+                                                    case "phone":
+                                                        return (
+                                                            <div
+                                                                className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
 
-                                                    switch (c.slug) {
-                                                        case "phone":
-                                                            return (
-                                                                <div
-                                                                    className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
-
-                                                                    <div className="text-right">
-                                                                        {c.type} ▶
-                                                                    </div>
-                                                                    <div className="pl-2 text-left">
-                                                                        <a href={"tel:" + c.contact}>
-                                                                            {c.contact}
-                                                                        </a>
-                                                                    </div>
-
+                                                                <div className="text-right">
+                                                                    {c.type} ▶
                                                                 </div>
-                                                            )
-                                                        case "email":
-                                                            return (
-                                                                <div
-                                                                    className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
-                                                                    <div className="text-right">
-                                                                        {c.type} ▶
-                                                                    </div>
-                                                                    <div className="pl-2 text-left">
-                                                                        <a href={"mailto:" + c.contact}>
-                                                                            {c.contact}
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            );
-                                                        default:
-                                                            return (
-                                                                <div
-                                                                    className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
-                                                                    <div className="text-right">
-                                                                        {c.type} ▶
-                                                                    </div>
-                                                                    <div className="pl-2 text-left">
+                                                                <div className="pl-2 text-left">
+                                                                    <a href={"tel:" + c.contact}>
                                                                         {c.contact}
-                                                                    </div>
+                                                                    </a>
                                                                 </div>
-                                                            );
-                                                    }
 
-                                                })}
-                                            </div>
-                                            <div className="mt-3 items-center text-center">
+                                                            </div>
+                                                        )
+                                                    case "email":
+                                                        return (
+                                                            <div
+                                                                className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                <div className="text-right">
+                                                                    {c.type} ▶
+                                                                </div>
+                                                                <div className="pl-2 text-left">
+                                                                    <a href={"mailto:" + c.contact}>
+                                                                        {c.contact}
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    default:
+                                                        return (
+                                                            <div
+                                                                className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                <div className="text-right">
+                                                                    {c.type} ▶
+                                                                </div>
+                                                                <div className="pl-2 text-left">
+                                                                   <div>{c.contact}</div>
+                                                                </div>
+                                                            </div>
+                                                        );
+
+                                                }
+
+                                            })}
+                                            <div className="mt-3 mb-2 items-center text-center">
 
                                                 <a
 
@@ -206,16 +204,31 @@ export const RegionMap = () => {
                                                     Ugrás a weboldalra
                                                 </a>
                                             </div>
-
                                         </div>
+
                                     </div>
+                                    <div
+                                        className="w-full bg-gray-200 p-3">
+                                        <h1 className="text-2xl text-center font-semibold text-gray-700 mt-4 mb-5">Irodánkról</h1>
+                                        <Carousel className="h-[426px]">
+                                            <img className=""
+                                                 src={"http://www.temetkezes.hu/assets/img/header-bg.jpg"}
+                                                 alt=""/>
+                                            <img className=""
+                                                 src={"http://www.temetkezes.hu/assets/img/header-bg.jpg"}
+                                                 alt=""/>
+
+                                        </Carousel>
+                                    </div>
+
+
                                 </div>
 
                             </div>
                         );
                     })}
                 </div>
-                <div className="h-flexible">
+                <div className="h-flexible lg:col-span-3">
                     <GoogleMap
                         mapContainerStyle={{
                             height: "100%",
@@ -226,7 +239,7 @@ export const RegionMap = () => {
                     >
                         {offices.map((office) => {
                             return (
-                                <MarkerF onClick={() => {
+                                <MarkerF key={office.id} onClick={() => {
                                     setSelectedMarker(office)
                                     setSelectedLocation({lat: office.latitude, lng: office.longitude})
                                     setZoom(17)

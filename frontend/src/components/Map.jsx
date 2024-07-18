@@ -6,13 +6,13 @@ import {Link, useNavigate} from "react-router-dom";
 import {OfficeContext} from "../contexts/OfficeContext.jsx";
 
 import {Dropdown} from "flowbite-react";
-import {DropdownItem} from "flowbite-react";
-import ReactDOM from "react-dom/client";
 
 export default function MapG() {
     const button = styled.button`
-    
-        background: #555555;
+
+    {
+        background-color: #555555;
+    }
     `
     const Map = styled.div`
         margin: 1rem auto;
@@ -255,6 +255,7 @@ export default function MapG() {
 
     let map = <VectorMap id="hungarymap" className="max-h-screen w-full" {...nzMap} layerProps={layerProps}
                          checkedLayers={codes} currentLayers={['']}>
+
         <text x="420" y="247">Békés</text>
         <text x="290" y="177">Pest</text>
         <text x="265" y="270">Bács-Kiskun</text>
@@ -268,7 +269,7 @@ export default function MapG() {
         <text x="200" y="195">Fejér</text>
         <text x="175" y="125">Komárom-</text>
         <text x="175" y="136">Esztergom</text>
-        <text x="63" y="140">Győr-Moson-Sopron</text>
+        <text x="51" y="140">Győr-Moson-Sopron</text>
         <text x="195" y="280">Tolna</text>
         <text x="470" y="87">Szabolcs-Szatmár-Bereg</text>
         <text x="170" y="335">Baranya</text>
@@ -277,16 +278,15 @@ export default function MapG() {
         <text x="56" y="251">Zala</text>
         <text x="117" y="283">Somogy</text>
 
-
     </VectorMap>
 
 
     return (
         <div className="items-center">
-        <div className="container mx-auto mt-3">
+            <div className="container mx-auto mt-3">
 
                 <div className="grid justify-items-center mb-3 mt-3">
-                    <Dropdown styles={button} className="bg-gray-900" label="Válassz megyét">
+                    <Dropdown color="dark"  className="bg-gray-900" label="Válassz megyét">
                         {
                             regionCode.map(code => {
                                     return (
@@ -304,7 +304,9 @@ export default function MapG() {
 
 
             <Map className="h-2/3 grid justify-items-center">
+
                 {map}
+
             </Map>
         </div>
 

@@ -284,13 +284,12 @@ export default function MapG() {
     return (
         <div className="items-center">
             <div className="container mx-auto mt-3">
-
                 <div className="grid justify-items-center mb-3 mt-3">
-                    <Dropdown color="dark"  className="bg-gray-900" label="Válassz megyét">
+                    <Dropdown color="dark" className="bg-gray-900 text-white" label="Válassz megyét">
                         {
                             regionCode.map(code => {
                                     return (
-                                        <Dropdown.Item as="a"
+                                        <Dropdown.Item as="a" className="text-white"
                                                        href={"/map/regions/" + code.code}>{code.region}</Dropdown.Item>
                                     )
                                 }

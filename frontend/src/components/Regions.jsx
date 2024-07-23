@@ -45,8 +45,9 @@ export const RegionMap = () => {
     useEffect(() => {
 
         if(!loaded) {
+            document.body.style.zoom = "normal";
+            document.body.scrollTop = 0;
             getRegions()
-
         }
 
     }, [offices]);

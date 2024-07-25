@@ -7,7 +7,7 @@ export default function GuestLayout() {
 
 
         return (
-            <div id="guestLayout" className="text-gray-700 animated fadeInDown">
+            <div id="guestLayout" className="text-gray-700 min-h-screen animated fadeInDown">
                 <Header/>
                 <Outlet/>
 				<Footer/>

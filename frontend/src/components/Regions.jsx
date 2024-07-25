@@ -106,7 +106,7 @@ export const RegionMap = () => {
                                     </h1>
                                     <div className="p-3">
                                         <div
-                                            className="lg:text-xl text-center text-md cursor-pointer text-gray-700 mb-2 leading-relaxed"
+                                            className="lg:text-xl text-start text-md cursor-pointer text-gray-700 mb-2 leading-relaxed"
                                             onMouseEnter={() => {
 
                                                 setSelectedLocation({
@@ -128,9 +128,9 @@ export const RegionMap = () => {
                                             }
                                             }
                                         >
-                                            <div className="">
+                                            <div className="flex">
 
-                                                <div>{location}</div>
+                                                <div>{location}   </div>
                                                 <Avatar className="animate-bounce" alt="mapicon"
                                                         img={mapicon}/>
                                             </div>
@@ -140,78 +140,69 @@ export const RegionMap = () => {
 
 
                                     </div>
-                                    <div className="grid grid-cols-1 w-full justify-items-center lg:flex p-3">
+                                    <div className="flex lg:m-4 m-1 mb-3">
+                                        <div className="grid grid-cols-1 w-full justify-items-start lg:flex">
 
 
-                                        <div
-                                            className="grid grid-cols-1 mx-auto"
-                                        >
+                                            <div
+                                                className="grid grid-cols-1"
+                                            >
 
-                                            {contacts.map((c) => {
+                                                {contacts.map((c) => {
 
-                                                switch (c.slug) {
-                                                    case "phone":
-                                                        return (
-                                                            <div
-                                                                className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                    switch (c.slug) {
+                                                        case "phone":
+                                                            return (
+                                                                <div
+                                                                    className="grid grid-cols-1 lg:text-md text-sm text-gray-700 leading-relaxed">
 
-                                                                <div className="text-right">
-                                                                    {c.type} ▶
-                                                                </div>
-                                                                <div className="pl-2 text-left">
-                                                                    <a href={"tel:" + c.contact}>
+                                                                    <div className="text-left">
+                                                                        {c.type} ▶ <a href={"tel:" + c.contact}>
                                                                         {c.contact}
                                                                     </a>
-                                                                </div>
+                                                                    </div>
 
-                                                            </div>
-                                                        )
-                                                    case "email":
-                                                        return (
-                                                            <div
-                                                                className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
-                                                                <div className="text-right">
-                                                                    {c.type} ▶
-                                                                </div>
-                                                                <div className="pl-2 text-left">
-                                                                    <a href={"mailto:" + c.contact}>
-                                                                        {c.contact}
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        );
-                                                    default:
-                                                        return (
-                                                            <div
-                                                                className="grid grid-cols-2 lg:text-md text-sm text-gray-700 leading-relaxed">
-                                                                <div className="text-right">
-                                                                    {c.type} ▶
-                                                                </div>
-                                                                <div className="pl-2 text-left">
-                                                                   <div>{c.contact}</div>
-                                                                </div>
-                                                            </div>
-                                                        );
 
-                                                }
+                                                                </div>
+                                                            )
+                                                        case "email":
+                                                            return (
+                                                                <div
+                                                                    className="grid grid-cols-1 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                    <div className="text-left">
+                                                                        {c.type} ▶<a href={"mailto:" + c.contact}> {c.contact}</a>
+                                                                    </div>
 
-                                            })}
-                                            <div className="mt-3 mb-2 items-center text-center">
+                                                                </div>
+                                                            );
+                                                        default:
+                                                            return (
+                                                                <div
+                                                                    className="grid grid-cols-1 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                    <div className="text-left">
+                                                                        {c.type} ▶ {c.contact}
 
-                                                <a
+                                                                    </div>
 
-                                                    href={website}
-                                                    className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-gray-200 hover:bg-gray-300 font-bold text-center text-gray-700 md:text-lg rounded-lg shadow-md">
-                                                    Ugrás a weboldalra
-                                                </a>
+                                                                </div>
+                                                            );
+
+                                                    }
+
+                                                })}
+                                                <div className="mt-3 mb-2 items-start text-center">
+
+                                                    <a
+
+                                                        href={website}
+                                                        className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-gray-200 hover:bg-gray-300 font-bold text-center text-gray-700 md:text-lg rounded-lg shadow-md">
+                                                        Ugrás a weboldalra
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                    </div>
-                                    <div
-                                        className="w-full bg-gray-200 p-3">
-                                        <h1 className="text-2xl text-center font-semibold text-gray-700 mt-4 mb-5">Irodánkról</h1>
-                                        <Carousel className="h-[426px]">
+                                        </div>
+                                        <Carousel className="h-[10rem] p-2">
                                             <img className=""
                                                  src={"http://www.temetkezes.hu/assets/img/header-bg.jpg"}
                                                  alt=""/>

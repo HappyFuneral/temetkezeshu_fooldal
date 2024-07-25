@@ -7,7 +7,7 @@ export default function RegionLayout() {
 
 
     return (
-        <div id="regionLayout" className="text-gray-700 animated fadeInDown">
+        <div id="regionLayout" className="text-gray-700 animated fadeInDown min-h-screen">
             <Outlet/>
             <Footer/>
         </div>

@@ -1,6 +1,5 @@
 
 import MapG from '../components/Map.jsx';
-import bg from '../img/bg.jpg';
 import {Link} from "react-router-dom";
 import React from "react";
 
@@ -26,9 +25,9 @@ const Landing = () => {
                     </p>
                 </div>
             </div>
-            <section className="grid mx-auto w-auto min-h-screen items-center justify-items-center"
+            <section className="grid mx-auto w-auto items-center justify-items-center"
                      style={{
-                         backgroundImage: `url(${bg})`,
+                         backgroundColor: "#403e3e",
                          backgroundRepeat: "no-repeat",
                          backgroundSize: "cover",
                          backgroundPosition: "center center",
@@ -37,7 +36,6 @@ const Landing = () => {
 
                      }}
             >
-                <div className="w-full h-full"></div>
                 <div className="w-full lg:w-5/12 md:w-3/5" style={{}}>
                     <MapG className=""/>
                 </div>

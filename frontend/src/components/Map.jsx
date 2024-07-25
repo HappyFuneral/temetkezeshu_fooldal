@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {Link, useNavigate} from "react-router-dom";
 import {OfficeContext} from "../contexts/OfficeContext.jsx";
 
-import {Dropdown} from "flowbite-react";
+import {Accordion, Dropdown} from "flowbite-react";
 
 export default function MapG() {
     const button = styled.button`
@@ -269,7 +269,7 @@ export default function MapG() {
         <text x="200" y="195">Fejér</text>
         <text x="175" y="125">Komárom-</text>
         <text x="175" y="136">Esztergom</text>
-        <text x="51" y="140">Győr-Moson-Sopron</text>
+        <text x="54" y="136">Győr-Moson-Sopron</text>
         <text x="195" y="280">Tolna</text>
         <text x="470" y="87">Szabolcs-Szatmár-Bereg</text>
         <text x="170" y="335">Baranya</text>
@@ -307,6 +307,32 @@ export default function MapG() {
                 {map}
 
             </Map>
+
+                    <Accordion  className="m-4">
+                        <Accordion.Panel>
+                            <Accordion.Title className="bg-gray-900 text-gray-200 hover:bg-gray-800" >Irodák</Accordion.Title>
+                            <Accordion.Content className="bg-gray-200">
+                                <div className="mb-2 grid lg:grid-cols-3 grid-cols text-gray-800 bg-gray-200">
+                                    {
+                                        regionCode.map((regionCode) => {
+                                            let count = 0;
+                                            offices.map(office =>{
+
+                                                if (office.code === regionCode.code){
+                                                    count++;
+                                                }
+                                            })
+                                            return (<div key={regionCode.code}> {regionCode.region} (<span className="text-red-500">{count}</span>)</div>)
+                                        })
+                                    }
+                                </div>
+
+                            </Accordion.Content>
+                        </Accordion.Panel>
+
+                    </Accordion>
+
+
         </div>
 
     );

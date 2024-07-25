@@ -89,7 +89,7 @@ export const RegionMap = () => {
                     </p>
                 </div>
             </div>
-            <div className="grid lg:grid-cols-4 lg:gap-2 grid-cols-1">
+            <div className="grid xl:grid-cols-3 md:grid-cols-2 2xl:grid-cols-4 grid-cols-1">
                 <div className="overflow-y-scroll overflow-visible w-full antialiased h-flexible col">
                     {offices.map((office) => {
                         const { id, location, name, website,contacts } = office;
@@ -140,8 +140,8 @@ export const RegionMap = () => {
 
 
                                     </div>
-                                    <div className="flex lg:m-4 m-1 mb-3">
-                                        <div className="grid grid-cols-1 w-full justify-items-start lg:flex">
+                                    <div className="xl:flex lg:flex md:flex lg:m-4 m-1 mb-3">
+                                        <div className="grid grid-cols-1 w-full justify-items-start xl:flex">
 
 
                                             <div
@@ -154,7 +154,7 @@ export const RegionMap = () => {
                                                         case "phone":
                                                             return (
                                                                 <div
-                                                                    className="grid grid-cols-1 lg:text-md text-sm text-gray-700 leading-relaxed">
+                                                                    className="grid grid-cols-1 xl:text-md text-sm text-gray-700 leading-relaxed">
 
                                                                     <div className="text-left">
                                                                         {c.type} ▶ <a href={"tel:" + c.contact}>
@@ -195,14 +195,14 @@ export const RegionMap = () => {
                                                     <a
 
                                                         href={website}
-                                                        className="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-gray-200 hover:bg-gray-300 font-bold text-center text-gray-700 md:text-lg rounded-lg shadow-md">
+                                                        className="mt-3 sm:mt-0 py-2 px-3 md:py-2 md:px-2 bg-gray-200 hover:bg-gray-300 font-bold text-center text-gray-700 md:text-md text-md rounded-lg shadow-md">
                                                         Ugrás a weboldalra
                                                     </a>
                                                 </div>
                                             </div>
 
                                         </div>
-                                        <Carousel className="h-[10rem] p-2">
+                                        <Carousel className="xl:h-[10rem] h-[30rem] md:h-[25rem] sm:h-[10rem] p-2">
                                             <img className=""
                                                  src={"http://www.temetkezes.hu/assets/img/header-bg.jpg"}
                                                  alt=""/>
@@ -220,7 +220,7 @@ export const RegionMap = () => {
                         );
                     })}
                 </div>
-                <div className="h-flexible lg:col-span-3">
+                <div className="h-flexible xl:col-span-2 2xl:col-span-3">
                     <GoogleMap
                         mapContainerStyle={{
                             height: "100%",

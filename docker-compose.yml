@@ -4,8 +4,6 @@ services:
     container_name: temdb
     restart: unless-stopped
     image: mysql:8.0
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: Aevum176942
       MYSQL_USER: root2
@@ -13,6 +11,7 @@ services:
       MYSQL_DATABASE: temetkezes
     volumes:
       - "./data:/var/lib/mysql"
+
   phpmyadmin:
     image: phpmyadmin:5.2.0
     container_name: phpmyadmin
@@ -22,29 +21,33 @@ services:
     environment:
         PMA_HOST: temdb
         PMA_PORT: 3306
-    ports:
-        - 81:80
+
   spring-boot-app:
     container_name: javabackend
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
     depends_on:
       - mysql
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/temetkezes
       SPRING_DATASOURCE_USERNAME: root2
       SPRING_DATASOURCE_PASSWORD: Aevum176942
+
+  bekes:
+    container_name: bekes
+    restart: unless-stopped
+    build:
+      context: ./bekes_react
+      dockerfile: Dockerfile
+    volumes:
+      - "./bekes_react/frontend/:./"
   react-app:
     container_name: reactfrontend
     restart: unless-stopped
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "4000:4000"
     links:
       - "spring-boot-app"
 #  onlinetemetkezes:

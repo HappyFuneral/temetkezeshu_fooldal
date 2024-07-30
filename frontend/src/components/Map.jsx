@@ -312,7 +312,7 @@ export default function MapG() {
                         <Accordion.Panel>
                             <Accordion.Title className="bg-gray-900 text-gray-200 hover:bg-gray-800" >Irodák</Accordion.Title>
                             <Accordion.Content className="bg-gray-200">
-                                <div className="mb-2 grid lg:grid-cols-3 grid-cols text-gray-800 bg-gray-200">
+                                <div className="mb-2 grid lg:grid-cols-3 text-gray-800 bg-gray-200">
                                     {
                                         regionCode.map((regionCode) => {
                                             let count = 0;

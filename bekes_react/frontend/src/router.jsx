@@ -9,6 +9,7 @@ import ProductDetails from "./views/ProductDetails.jsx";
 import CheckoutForm from "./views/Checkout.jsx";
 import CreateProduct from "./views/products/Create.jsx";
 import Offer from "./views/Offer.jsx";
+import FormLayout from "./components/FormLayout.jsx";
 
 const router = createBrowserRouter([
     {
@@ -26,11 +27,14 @@ const router = createBrowserRouter([
         ]
     },
     {
-      path: '/',
-      element: <FormLayout/>,
-      children: [
-
-      ]
+        path: '/',
+        element: <FormLayout/>,
+        children: [
+            {
+                path: '/offer',
+                element: <Offer/>
+            },
+        ]
     },
     {
         path: '/',
@@ -50,10 +54,7 @@ const router = createBrowserRouter([
                 path: '/product/:id',
                 element: <ProductDetails/>
             },
-            {
-                path: '/offer',
-                element: <Offer/>
-            },
+
             {
                 path: '/login',
                 element: <Login/>

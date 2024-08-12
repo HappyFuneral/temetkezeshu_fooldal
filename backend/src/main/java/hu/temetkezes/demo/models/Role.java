@@ -11,12 +11,16 @@ import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Role extends BaseEntity{
-
     private String name;
+    private String authorities;
 
+
+   public Role(String name, String authorities){
+       setName(name);
+       setAuthorities(authorities);
+   }
 }

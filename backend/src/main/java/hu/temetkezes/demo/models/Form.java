@@ -1,5 +1,6 @@
 package hu.temetkezes.demo.models;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,20 +10,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-
-public class FuneralOptions extends  BaseEntity{
-
+public class Form extends BaseEntity{
 
     private String name;
-    private String description;
-    private int price;
 
-    public FuneralOptions(String name, String description, int price){
-        setName(name);
-        setDescription(description);
-        setPrice(price);
-    }
 }

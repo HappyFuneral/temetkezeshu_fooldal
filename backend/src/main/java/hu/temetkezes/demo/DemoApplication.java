@@ -1,5 +1,6 @@
 package hu.temetkezes.demo;
 
+import hu.temetkezes.demo.exception.ApiException;
 import hu.temetkezes.demo.models.*;
 import hu.temetkezes.demo.repository.*;
 //import hu.temetkezes.demo.services.UserService;
@@ -10,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jdbc.core.JdbcAggregateOperations;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /*
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -37,7 +40,12 @@ public class DemoApplication {
 
 	@Autowired
 	private ContactRepository contactRepository;
+	@Autowired
+	private RoleRepository roleRepository;
+	@Autowired
+	private CredentialRepository credentialRepository;
 
+	public static boolean seed = false;
 	/*
 	@Bean
 	public CommandLineRunner setupDefaultUser(UserService service) {
@@ -60,13 +68,42 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	@Bean
-	CommandLineRunner commandLineRunner(){
+	CommandLineRunner commandLineRunner() {
 		return args -> {
+			seed = true;
+			roleSeeder();
+			if (userRepository.count() == 0 ){
+				User user = new User();
+				user.setUserId(UUID.randomUUID().toString());
+				user.setName("Spring Blog");
+				user.setUsername("admin");
+				user.setEmail("test@test.com");
+				user.setPassword(new BCryptPasswordEncoder().encode("Aevum123789!"));
+
+				user.setRole(roleRepository.findAll().stream().filter(role -> role.getName().equals("SUPER_ADMIN")).toList().getFirst());
+				user.setBanned(false);
+				user.setConfirmEmail(true);
+				user.setActive(true);
+				user.setCredentialsNonExpired(false);
+				user.setAccountNonLocked(false);
+				userRepository.save(user);
+				credentialRepository.save(new CredentialEntity(user,user.getPassword()));
+			}
+
 			companySeeder();
 			funeralserviceSeeder();
 			contactSeeder();
 			officeSeeder();
+			seed = false;
 		};
+	}
+
+	public void roleSeeder(){
+		if (roleRepository.count() != 0) return;
+		ArrayList<Role> roles = new ArrayList<>();
+		roles.add(new Role("SUPER_ADMIN",""));
+		roles.add(new Role("USER",""));
+		roleRepository.saveAll(roles);
 	}
 
 	public void funeralserviceSeeder(){
@@ -555,18 +592,7 @@ public class DemoApplication {
 		}
 
 
-		if (userRepository.count() == 0 ){
-			User user = new User();
-			user.setName("Spring Blog");
-			user.setUsername("admin");
-			user.setEmail("test@test.com");
-			user.setPassword(new BCryptPasswordEncoder().encode("Aevum123789!"));
-			user.setRole("SUPER_ADMIN");
-			user.setBanned(false);
-			user.setConfirmEmail(true);
-			user.setActive(true);
-			userRepository.save(user);
-		}
+
 
 
 

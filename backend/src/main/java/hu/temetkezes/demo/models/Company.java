@@ -8,14 +8,11 @@ import lombok.*;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Company extends BaseEntity {
+
     private String name;
     private String shortName;
 

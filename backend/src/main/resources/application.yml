@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/temetkezes
+    username: root2
+    password: Aevum176942
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+jwt:
+  expiration: 420_000_000
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIgKGlzcykiOiJJc3N1ZXIiLCJJc3N1ZWQgQXQgKGlhdCkiOiIyMDI0LTA4LTEyVDA4OjIwOjUwLjY0OVoiLCJFeHBpcmF0aW9uIFRpbWUgKGV4cCkiOiIyMDI0LTA4LTEyVDA5OjIwOjUwLjY0OVoiLCJTdWJqZWN0IChzdWIpIjoiU3ViamVjdCIsIlVzZXJuYW1lIChhdWQpIjoiSmF2YUd1aWRlcyIsIlJvbGUiOiJBRE1JTiJ9.eOabxi76f9lV4tFcdhTS_tVlK940GjiLafkSw6LqZTA

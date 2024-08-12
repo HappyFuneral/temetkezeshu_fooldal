@@ -15,12 +15,8 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class FuneralService {
+public class FuneralService extends BaseEntity {
 
-
-    @Id
-    @GeneratedValue
-    private Long id;
     private String name;
     private String shortName;
     private String description;

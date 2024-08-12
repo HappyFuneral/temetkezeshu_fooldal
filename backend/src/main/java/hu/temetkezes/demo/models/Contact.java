@@ -12,15 +12,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Contact {
+public class Contact extends BaseEntity {
 
 
 
-    @Id
-    @GeneratedValue
-    private Long id;
     private String type;
     private String slug;
     private String contact;

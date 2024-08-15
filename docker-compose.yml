@@ -9,6 +9,9 @@ services:
       MYSQL_USER: root2
       MYSQL_PASSWORD: Aevum176942
       MYSQL_DATABASE: temetkezes
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./backups:/backup # Itt tároljuk a dump fájlokat
   phpmyadmin:
     image: phpmyadmin:5.2.0
     container_name: phpmyadmin
@@ -29,6 +32,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/temetkezes
       SPRING_DATASOURCE_USERNAME: root2
       SPRING_DATASOURCE_PASSWORD: Aevum176942
+
   bekes:
     container_name: bekes
     restart: unless-stopped

@@ -9,9 +9,6 @@ services:
       MYSQL_USER: root2
       MYSQL_PASSWORD: Aevum176942
       MYSQL_DATABASE: temetkezes
-    volumes:
-      - "./data:/var/lib/mysql"
-
   phpmyadmin:
     image: phpmyadmin:5.2.0
     container_name: phpmyadmin
@@ -21,7 +18,6 @@ services:
     environment:
         PMA_HOST: temdb
         PMA_PORT: 3306
-
   spring-boot-app:
     container_name: javabackend
     build:
@@ -47,24 +43,24 @@ services:
       dockerfile: Dockerfile
     links:
       - "spring-boot-app"
-#  onlinetemetkezes:
-#    container_name: onlinetemetkezes
-#    depends_on:
-#      - mysql
-#    image: wordpress:latest
-#    restart: always
+  bekes2:
+    container_name: bekes2wp
+    depends_on:
+      - mysql
+    image: wordpress:latest
+    restart: always
     # Restart line controls the restart mode, meaning if the container stops running for any reason, it will restart the process immediately.
-#    ports:
-#      - "8000:80"
-#      # The previous line defines the port that the WordPress container will use. After successful installation, the full path will look like this: http://localhost:8000
-#    environment:
-#      WORDPRESS_DB_HOST: temdb:3306
-#      WORDPRESS_DB_USER: root
-#      WORDPRESS_DB_PASSWORD: Aevum176942
-#      WORDPRESS_DB_NAME: onlinewpdb
-    # Similar to MySQL image variables, the last four lines define the main variables needed for the WordPress container to work properly with the MySQL container.
-#    volumes:
-#      [ "./onlinetemetkezes:/var/www/html" ]
+    ports:
+      - "8000:80"
+      # The previous line defines the port that the WordPress container will use. After successful installation, the full path will look like this: http://localhost:8000
+    environment:
+      WORDPRESS_DB_HOST: temdb:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: Aevum176942
+      WORDPRESS_DB_NAME: wpdb
+  # Similar to MySQL image variables, the last four lines define the main variables needed for the WordPress container to work properly with the MySQL container.
+    volumes:
+      ["./bekes2_wp:/var/www/html"]
   proxy:
     build: ./proxy
     restart: unless-stopped

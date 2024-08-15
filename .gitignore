@@ -1,1 +1,3 @@
-data/mysql.sock
+data
+bekes2_wp/wp-admin
+bekes2_wp/wp-includes

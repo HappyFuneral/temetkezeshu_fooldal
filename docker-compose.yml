@@ -65,6 +65,7 @@ services:
        - ./bekes2_wp:/var/www/html
        - ./bekes2_wp/apache2.conf:/etc/apache2.conf
        - ./bekes2_wp/php/php.ini-production:/usr/local/etc/php/php.ini-production
+       - ./bekes2_wp/php/php.ini-development:/usr/local/etc/php/php.ini-development
   bekes3:
     container_name: bekes3wp
     depends_on:

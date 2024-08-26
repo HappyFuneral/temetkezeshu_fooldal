@@ -63,6 +63,7 @@ services:
   # Similar to MySQL image variables, the last four lines define the main variables needed for the WordPress container to work properly with the MySQL container.
     volumes:
       ["./bekes2_wp:/var/www/html"]
+      ["./bekes2_wp/apache2/apache2.conf:/etc/apache2/apache2.conf"]
   bekes3:
     container_name: bekes3wp
     depends_on:
